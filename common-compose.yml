@@ -30,5 +30,3 @@ services:
     - ./mariadb/conf.d:/etc/mysql/conf.d
     environment:
     - MYSQL_ROOT_PASSWORD=dev
-    ports:
-    - 3306
