@@ -1,0 +1,23 @@
+version: '2'
+services:
+  nginx:
+    extends:
+      file: common-compose.yml
+      service: nginx
+    depends_on:
+    - php
+  php:
+    extends:
+      file: common-compose.yml
+      service: php
+    links:
+    - mariadb:mariadb
+    - mongo:mongo
+  mongo:
+    extends:
+      file: common-compose.yml
+      service: mongo
+  mariadb:
+    extends:
+      file: common-compose.yml
+      service: mariadb
