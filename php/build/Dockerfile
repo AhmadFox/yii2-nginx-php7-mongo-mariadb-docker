@@ -2,10 +2,10 @@ FROM php:7.0-fpm
 
 RUN apt-get update \
     && apt-get install -y git zlibc zlib1g zlib1g-dev libicu52 libicu-dev g++ libssl-dev \
-    libmemcached-dev libmcrypt-dev ssh --no-install-recommends \
+    libmemcached-dev libmcrypt-dev ssh libbz2-dev --no-install-recommends \
     && rm -r /var/lib/apt/lists/*
 RUN docker-php-ext-configure mbstring
-RUN docker-php-ext-install mbstring zip intl bcmath pdo_mysql mcrypt
+RUN docker-php-ext-install mbstring zip intl bcmath pdo_mysql mcrypt bz2
 RUN pecl install mongodb && echo extension=mongodb.so > /usr/local/etc/php/conf.d/ext-mongodb.ini
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
