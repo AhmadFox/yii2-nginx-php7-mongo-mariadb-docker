@@ -13,7 +13,7 @@ services:
         ipv4_address: 172.16.238.100
   php:
     container_name: php7
-    build: ./php/build
+    image: subdee/php7-mongo
     volumes:
     - ../project:/www:rw
     - ./php/php-fpm.conf:/usr/local/etc/php-fpm.conf
@@ -22,11 +22,9 @@ services:
     environment:
     - ICU_DATA=/opt/icu/
     - DB_HOST=mariadb
-    - DB_NAME=myportugal
     - DB_USER=root
     - DB_PASSWORD=dev
     - MONGO_HOST=mongodb
-    - MONGO_DBNAME=myportugal
     - MONGO_USER=
     - MONGO_PASSWORD=
     networks:
