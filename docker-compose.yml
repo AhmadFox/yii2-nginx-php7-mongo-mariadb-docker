@@ -21,3 +21,23 @@ services:
     extends:
       file: common-compose.yml
       service: mariadb
+  phantomjs:
+    container_name: phantomjs
+    image: wernight/phantomjs:1.9.7
+    command: phantomjs --webdriver=4444
+    ports:
+    - "4444:4444"
+    extra_hosts:
+    - "subdee.test:172.16.238.100"
+    - "admin.subdee.test:172.16.238.100"
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.150
+networks:
+  app_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.16.238.0/24
+        gateway: 172.16.238.1
