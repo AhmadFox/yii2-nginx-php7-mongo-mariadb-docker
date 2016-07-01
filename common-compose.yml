@@ -29,6 +29,7 @@ services:
     - MONGO_PASSWORD=
     - PAYPAL_ID=
     - PAYPAL_SECRET=
+    - SENDGRID_API_KEY=
     networks:
       app_net:
         ipv4_address: 172.16.238.110
